@@ -1,36 +1,34 @@
 package com.menu.dto;
 
-import org.apache.ibatis.type.Alias;
+import java.util.ArrayList;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Alias("menu")
 @Getter
 @Setter
-@ToString
 public class MenuDTO {
-	String menu_id;
-	String menu_nm;
-	int sort_how;
-	String up_menu_id;
+	private int menu_id;
+	private String menu_nm;
+	private int up_menu_id;
+	private int lft;
+	private int rgt;
+	private String up_menu_nm;
+	private String uuid;
+	private ArrayList<FileDTO> fileList;
 	
+	private int d1_id;
+	private int d2_id;
+	private int d3_id;
+	private int d4_id;
+	private int d5_id;
+	private int d6_id;
 	
-	public MenuDTO() {}
-
-	public MenuDTO(String menu_id, String menu_nm, int sort_how, String up_menu_id) {
-		super();
-		this.menu_id = menu_id;
-		this.menu_nm = menu_nm;
-		this.sort_how = sort_how;
-		this.up_menu_id = up_menu_id;
+	private String d1_nm;
+	private String d2_nm;
+	private String d3_nm;
+	private String d4_nm;
+	private String d5_nm;
+	private String d6_nm;
 	}
-	
-	public MenuDTO(String menu_id) {
-		super();
-		this.menu_id=menu_id;
-	}
-	
-	
-}
