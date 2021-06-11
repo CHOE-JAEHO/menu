@@ -28,68 +28,68 @@ public class MenuController {
 	@Autowired
 	private MenuService mservice;
 	
-	@RequestMapping("/")
+	@RequestMapping( "/" )
 	public ModelAndView selectAllFromMenu() {
-		ModelAndView mav = new ModelAndView("/listMenu");
-		List<MenuDTO> menuList = mservice.menuList();
-		mav.addObject("list", menuList);
+		ModelAndView mav = new ModelAndView( "/listMenu" );
+		List< MenuDTO > menuList = mservice.menuList();
+		mav.addObject( "list", menuList );
 		return mav;
 	}
 	
-	@RequestMapping("/AddMenuWindow")
+	@RequestMapping( "/AddMenuWindow" )
 	public ModelAndView AddMenuWindow() {
-		ModelAndView mav = new ModelAndView("/addMenu");
-		List<MenuDTO> upMenuList = mservice.upMenuList();
-		mav.addObject("list", upMenuList);
+		ModelAndView mav = new ModelAndView( "/addMenu" );
+		List< MenuDTO > upMenuList = mservice.upMenuList();
+		mav.addObject( "list", upMenuList );
 		return mav;
 	}
 	
-	@PostMapping("/addMenu")
+	@PostMapping( "/addMenu" )
 	public ModelAndView addMenu(MenuDTO mdto) {
-		ModelAndView mav = new ModelAndView("/listMenu");
-		mservice.addMenu(mdto);
-		List<MenuDTO> menuList = mservice.menuList();
-		mav.addObject("list", menuList);
+		ModelAndView mav = new ModelAndView( "/listMenu" );
+		mservice.addMenu( mdto );
+		List< MenuDTO > menuList = mservice.menuList();
+		mav.addObject( "list", menuList );
 		return mav;
 	}
 	
-	@RequestMapping("/detailMenu")
-	public ModelAndView goDetailMenu(MenuDTO mdto) {
-		ModelAndView mav = new ModelAndView("/detailMenu");	
-		mav.addObject("depth", mservice.menuDepth(mdto));
-		mav.addObject("detail", mservice.detailMenu(mdto));
+	@RequestMapping( "/detailMenu" )
+	public ModelAndView goDetailMenu( MenuDTO mdto ) {
+		ModelAndView mav = new ModelAndView( "/detailMenu" );	
+		mav.addObject( "depth", mservice.menuDepth( mdto ) );
+		mav.addObject( "detail", mservice.detailMenu( mdto ) );
 		return mav;
 	}
 	
-	@RequestMapping("/updateMenuWindow")
-	public ModelAndView updateMenuWindow(MenuDTO mdto) {
-		ModelAndView mav = new ModelAndView("/updateMenu");	
-		mav.addObject("depth", mservice.menuDepth(mdto));
-		mav.addObject("detail", mservice.detailMenu(mdto));
+	@RequestMapping( "/updateMenuWindow" )
+	public ModelAndView updateMenuWindow( MenuDTO mdto ) {
+		ModelAndView mav = new ModelAndView( "/updateMenu" );	
+		mav.addObject( "depth", mservice.menuDepth( mdto ) );
+		mav.addObject( "detail", mservice.detailMenu( mdto ) );
 		return mav;
 	}
 	
-	@RequestMapping("/updateMenuFile")
+	@RequestMapping( "/updateMenuFile" )
 	public ModelAndView updateMenu(MenuDTO mdto) {
-		ModelAndView mav = new ModelAndView("/detailMenu");
+		ModelAndView mav = new ModelAndView( "/detailMenu" );
 		mservice.menuUpdate(mdto);
-		mav.addObject("result", "success");
-		mav.addObject("depth", mservice.menuDepth(mdto));
-		mav.addObject("detail", mservice.detailMenu(mdto));
+		mav.addObject( "result", "success" );
+		mav.addObject( "depth", mservice.menuDepth( mdto ) );
+		mav.addObject( "detail", mservice.detailMenu( mdto ) );
 		return mav;
 	}
 	
-	@RequestMapping("/deleteMenu")
-	public ResponseEntity<String> deleteMenu(@RequestBody MenuDTO mdto) {
-		int result = mservice.deleteMenu(mdto);
+	@RequestMapping( "/deleteMenu" )
+	public ResponseEntity< String > deleteMenu( @RequestBody MenuDTO mdto ) {
+		int result = mservice.deleteMenu( mdto );
 		if( result == 1 ) {
-			return new ResponseEntity<> ("success", HttpStatus.OK);
+			return new ResponseEntity<> ( "success", HttpStatus.OK );
 		}
-		return new ResponseEntity<> ("error", HttpStatus.OK);
+		return new ResponseEntity<> ( "error", HttpStatus.OK );
 	}
 	
-	@RequestMapping("/nowFileShow{menu_id}")
-	public ResponseEntity<ArrayList<FileDTO>> fileSelectt(@PathVariable("menu_id")int menu_id){
-		return new ResponseEntity<> (mservice.fileSelect(menu_id), HttpStatus.OK);
+	@RequestMapping( "/nowFileShow{menu_id}" )
+	public ResponseEntity< ArrayList< FileDTO > > fileSelectt( @PathVariable( "menu_id" )int menu_id){
+		return new ResponseEntity<> ( mservice.fileSelect( menu_id ), HttpStatus.OK);
 	}	
 }

@@ -18,17 +18,5 @@ public class MenuDTO {
 	private String uuid;
 	private ArrayList<FileDTO> fileList;
 	
-	private int d1_id;
-	private int d2_id;
-	private int d3_id;
-	private int d4_id;
-	private int d5_id;
-	private int d6_id;
-	
-	private String d1_nm;
-	private String d2_nm;
-	private String d3_nm;
-	private String d4_nm;
-	private String d5_nm;
-	private String d6_nm;
+	private String path;
 	}

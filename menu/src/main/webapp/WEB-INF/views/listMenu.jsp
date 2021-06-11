@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="/static/js/moveWindow.js"> 
-</script>
+<script type="text/javascript" src="/static/js/moveWindow.js"></script>
+<link rel = "stylesheet" href = "/static/css/menuList.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -21,15 +21,11 @@
 	<div id = "menuList" style = 'text-align : left; margin : auto'>
 		<table border = "1" style = 'margin : auto'>
 			<tr>
-			<td>DEPTH1</td><<td>DEPTH2</td><td>DEPTH3</td><td>DEPTH4</td><td>DEPTH5</td>
+			<td>MENU_NAME</td><<td>PATH</td>
 			</tr>
 			<c:forEach var = "list" items = "${list}">
 			<tr>
-			<td><a href = "/detailMenu?menu_id=${list.d1_id}" >${list.d1_nm}</a></td>
-		 	<td><a href = "/detailMenu?menu_id=${list.d2_id}" >${list.d2_nm}</a></td>
-		 	<td><a href = "/detailMenu?menu_id=${list.d3_id}" >${list.d3_nm}</a></td>
-		 	<td><a href = "/detailMenu?menu_id=${list.d4_id}" >${list.d4_nm}</a></td>
-		 	<td><a href = "/detailMenu?menu_id=${list.d5_id}" >${list.d5_nm}</a></td>
+			<td>${list.menu_nm }</td><td><a href = "/detailMenu?menu_id=${ list.menu_id }" > ${ list.path }</a></td>
 		 	</tr>
 			</c:forEach>
 		</table>
